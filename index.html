@@ -5,6 +5,12 @@
 	<title>CS570 Project</title>
 	<link rel="stylesheet" type="text/css" href="assets/stylesheets/main.css">
   <link href="https://fonts.googleapis.com/css?family=Lato:100,300,400" rel="stylesheet">
+  <style>
+	div {
+	  text-align: justify;
+	  text-justify: inter-word;
+	}
+	</style>
 </head>
 <body>
 <header class="primary-header container group">
@@ -22,7 +28,7 @@
 </header>
 
 <section class="hero container">
-  <h2>[tentative]Machine Learning Accelerators</h2>
+  <h2>Survey on State of the Art Machine Learning Accelerators</h2>
   <p>Victor Martin Agostinelli III, Indhu Priya Karunagaran, Diksha Pritam Todankar, and Kazi Ahmed Asif Fuad</p>
   High-Performance Computer Architecture (ECE/CS 570) </br> 
   Course Instructor: Professor Ben Lee, Ph.D.
@@ -30,10 +36,51 @@
 
 <section class="row">
  <div class="grid">
-	<h3>Machine Learning Accelerators</h3>
-		</a>
-		<p>Machine Learning Accelerators</p>
-  
+	<h1> Motivation </h1>
+	<div>
+		<p>Machine learning solutions are increasingly popular and applicable, but with the slowing down of Moore’s law comes a necessity for dedicated hardware to accelerate those solutions further. 
+		Machine learning accelerators are, as such, a hot area of both academic and commercial interest. Companies like Tesla and Google are using dedicated hardware to enable tasks such as real-time 
+		vision for autonomous vehicles or translation between disparate languages. 
+		In parallel, academic groups across the world are focused on exploring the relatively young design space for these accelerators. 
+		Developments in this space are constant, exciting, and have resulted in designs that operate quite differently from one another, 
+		in many cases with very clear trade-offs between them in terms of power consumed, area taken up, and speed.  </p>
+		
+		<p>
+		This survey seeks to acquire a holistic view of the design space, some of the techniques that state of the art accelerators are being developed with, and a sense of which modern architectures, 
+		both from academic and commercial groups, are relevant and how they compare with one another. To this end, a number of papers published in relevant machine learning journals and at specific 
+		conferences must be engaged with alongside notable commercial options. Several accelerator designs have already been identified as particularly promising, including Eyeriss from the 
+		Massachusetts Institute of Technology [5], FlexFlow from the Chinese Academy of Sciences [2], and MAERI from the Georgia Institute of Technology [4], and will be included in this survey’s comparisons. 
+		</p>
+	</div>
+	
+	
+	<h1>Background for Survey</h1>
+		<div>
+		<p>
+		A few key concepts should be kept in mind that apply to most, if not all, machine learning accelerators, including the typical components of a machine learning accelerator, 
+		the design stages for these accelerators, and how useful metrics can be extracted from a given piece of dedicated hardware that allow for meaningful comparisons to other architectures. </p>
+		<p>
+		As far as components go, while this can and does vary on a case to case basis, the bulk of most accelerators is typically dedicated to a systolic array of processing engines or processing elements (PEs). These PEs are capable of accelerating typical arithmetic operations that a specific accelerator might need to often deal with, with one incredibly common example being dedicated hardware within a PE for multiply-and-accumulate operations (MACs). Tremendous energy efficiency gains can be acquired in the careful use of the array of PEs in a given accelerator, making their careful use for some model or task extremely important [3]. In addition, many accelerators feature on-board buffers for less costly memory accesses, when necessary. 
+		These buffers allow for a given accelerator to reuse specific pieces of data when it would be too costly in terms of time or energy efficiency to pull it from off-chip memory. 
+		</p>
+		<p>
+		The traditional design flow for a machine learning accelerator typically follows as such: the specification of a dataflow, the selection of a mapping strategy, the allocation of hardware resources [7]. 
+		The dataflow for a given accelerator usually defines the accelerator’s data reuse strategy in addition to defining some strategies for high PE array utilization that are beyond the scope of this survey [1]. 
+		Choosing a dataflow is typically done either through heuristics, brute force search of a very limited design space, or selection by experts [1]. 
+		The mapping strategy details how resources are mapped when a given machine learning model demands more PEs or buffer space than the hardware allows, which can be common for large networks or accelerators on the edge [7]. 
+		It is often wrapped together with the process of hardware resource allocation, as its design space is quite small. In line with that, hardware resource allocation is, ultimately, the partitioning of available buffer 
+		space and PEs according to the model’s computational needs and is accomplished through DRL-based methods when it comes to cutting edge solutions, although such developments are still nascent [7]. 
+		</p>
+		<p>
+		When attempting to extract useful metrics, the first set of metrics that appear as fairly universal for machine learning accelerators would be power efficiency, performance for a given model and benchmark, 
+		and physical size [6]. The final metric is a simple one to measure and make comparisons with, but the first two can be more difficult to extract, especially if a team of architects is attempting to decide 
+		between suitable accelerator architectures before design-time and must simulate. Fortunately, a few academic groups have worked to provide tools that are capable of estimating one or both of these metrics, 
+		including MAESTRO [6], a novel tool developed by a group at the Georgia Institute of Technology. 
+		</p>
+		</div>
+	</br>
+	for more, please check the <a href="fullreport.html"> <h2>Full report with references</h2></a>
+		
   </div>
 </section>
 
